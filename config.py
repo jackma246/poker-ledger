@@ -2,7 +2,7 @@ import os
 from datetime import timedelta
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'jackrocks'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'your-secret-key-here-change-this-in-production'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///poker_ledger.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOAD_FOLDER = 'uploads'
@@ -21,16 +21,11 @@ class DevelopmentConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
-    SESSION_COOKIE_SECURE = True  # Requires HTTPS
+    SESSION_COOKIE_SECURE = False  # Set to True when HTTPS is available
     
-    # Use environment variables for sensitive data
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-    ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD')
-    
-    if not SECRET_KEY:
-        raise ValueError("SECRET_KEY environment variable is required for production")
-    if not ADMIN_PASSWORD:
-        raise ValueError("ADMIN_PASSWORD environment variable is required for production")
+    # Use environment variables for sensitive data, but don't fail if not set
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'your-secret-key-here-change-this-in-production'
+    ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD') or 'admin123'
 
 config = {
     'development': DevelopmentConfig,

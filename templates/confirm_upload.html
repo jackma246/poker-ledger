@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}Confirm Upload{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Confirm CSV Upload</h2>
+    
+    <div class="alert alert-info">
+        <strong>Game Date:</strong> {{ game_date }}
+    </div>
+
+    {% if consolidation_info %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>Player Consolidation Summary</h5>
+        </div>
+        <div class="card-body">
+            <p class="text-muted">The following players were consolidated from multiple entries in your CSV:</p>
+            {% for info in consolidation_info %}
+            <div class="mb-2">
+                <strong>{{ info.final_name }}</strong> (Total: ${{ "%.2f"|format(info.total_net) }})
+                <br>
+                <small class="text-muted">From: {{ info.original_names|join(', ') }}</small>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('confirm_upload') }}">
+        <input type="hidden" name="game_date" value="{{ game_date }}">
+        
+        <!-- New Players Section -->
+        {% if new_players %}
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>New Players Found</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">These players were not found in the database. Choose how to handle each one:</p>
+                
+                {% for player in new_players %}
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-3">
+                        <strong>{{ player.name }}</strong>
+                        <br>
+                        <small class="text-muted">Net: ${{ "%.2f"|format(player.net) }}</small>
+                        <input type="hidden" name="new_players" value="{{ player.name }}|{{ player.net }}">
+                    </div>
+                    <div class="col-md-3">
+                        <select name="action_{{ loop.index0 }}" class="form-select action-select" data-index="{{ loop.index0 }}">
+                            <option value="create">Create New Player</option>
+                            <option value="match">Match to Existing Player</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Create new player option -->
+                        <div class="create-option" id="create_{{ loop.index0 }}">
+                            <input type="text" name="create_name_{{ loop.index0 }}" class="form-control" 
+                                   placeholder="Enter player name" value="{{ player.name }}">
+                        </div>
+                        
+                        <!-- Match to existing player option -->
+                        <div class="match-option" id="match_{{ loop.index0 }}" style="display: none;">
+                            <select name="match_player_{{ loop.index0 }}" class="form-select">
+                                <option value="">Select existing player...</option>
+                                {% for existing_player in all_existing_players %}
+                                <option value="{{ existing_player.id }}">{{ existing_player.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Existing Players Section -->
+        {% if existing_players %}
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Existing Players Found</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">These players were matched to existing players in the database:</p>
+                
+                {% for player in existing_players %}
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-3">
+                        <strong>{{ player.name }}</strong>
+                        <br>
+                        <small class="text-muted">Net: ${{ "%.2f"|format(player.net) }}</small>
+                        <input type="hidden" name="existing_players" value="{{ player.name }}|{{ player.net }}|{{ player.player_id }}">
+                    </div>
+                    <div class="col-md-3">
+                        <span class="badge bg-success">{{ player.matched_name }}</span>
+                    </div>
+                    <div class="col-md-3">
+                        <select name="existing_action_{{ loop.index0 }}" class="form-select existing-action-select" data-index="{{ loop.index0 }}">
+                            <option value="keep">Keep Match</option>
+                            <option value="fix">Fix Match</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="fix-option" id="fix_{{ loop.index0 }}" style="display: none;">
+                            <select name="fix_match_player_{{ loop.index0 }}" class="form-select">
+                                <option value="{{ player.player_id }}">{{ player.matched_name }}</option>
+                                {% for existing_player in all_existing_players %}
+                                    {% if existing_player.id != player.player_id %}
+                                    <option value="{{ existing_player.id }}">{{ existing_player.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="d-flex justify-content-between">
+            <a href="{{ url_for('upload_csv') }}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Confirm Upload</button>
+        </div>
+    </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle action selection for new players
+    document.querySelectorAll('.action-select').forEach(select => {
+        select.addEventListener('change', function() {
+            const index = this.dataset.index;
+            const createDiv = document.getElementById('create_' + index);
+            const matchDiv = document.getElementById('match_' + index);
+            
+            if (this.value === 'create') {
+                createDiv.style.display = 'block';
+                matchDiv.style.display = 'none';
+            } else {
+                createDiv.style.display = 'none';
+                matchDiv.style.display = 'block';
+            }
+        });
+    });
+
+    // Handle action selection for existing players
+    document.querySelectorAll('.existing-action-select').forEach(select => {
+        select.addEventListener('change', function() {
+            const index = this.dataset.index;
+            const fixDiv = document.getElementById('fix_' + index);
+            
+            if (this.value === 'fix') {
+                fixDiv.style.display = 'block';
+            } else {
+                fixDiv.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

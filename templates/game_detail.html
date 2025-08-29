@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block title %}Game Details - {{ game_date.strftime('%B %d, %Y') }} - Poker Ledger{% endblock %}
+
+{% block head %}
+<style>
+    .game-header {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-left: 4px solid #007bff;
+    }
+    
+    .game-header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #495057;
+    }
+    
+    .game-header .date-info {
+        font-size: 1rem;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+    
+    .players-table {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .table th {
+        background: #f8f9fa;
+        border: none;
+        padding: 15px;
+        font-weight: 600;
+        color: #495057;
+    }
+    
+    .table td {
+        padding: 15px;
+        vertical-align: middle;
+        border: none;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .table tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .player-name {
+        font-weight: 600;
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .player-name:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+    
+    .profit-positive {
+        color: #28a745;
+        font-weight: bold;
+    }
+    
+    .profit-negative {
+        color: #dc3545;
+        font-weight: bold;
+    }
+    
+    .profit-zero {
+        color: #6c757d;
+        font-weight: bold;
+    }
+    
+    .back-button {
+        background: #6c757d;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+    
+    .back-button:hover {
+        background: #5a6268;
+        color: white;
+        text-decoration: none;
+    }
+    
+    .no-players {
+        text-align: center;
+        padding: 40px;
+        color: #6c757d;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="{{ url_for('calendar') }}" class="back-button">
+                <i class="fas fa-arrow-left me-2"></i>Back to Calendar
+            </a>
+            <a href="{{ url_for('ledger') }}" class="btn btn-outline-primary">
+                <i class="fas fa-list me-1"></i>View Ledger
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="game-header">
+    <h1><i class="fas fa-gamepad me-2"></i>Game Details</h1>
+    <div class="date-info">
+        <i class="fas fa-calendar me-2"></i>{{ game_date.strftime('%A, %B %d, %Y') }}
+    </div>
+</div>
+
+{% if game_data %}
+    <div class="players-table">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th style="width: 150px; text-align: right;">Profit/Loss</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player_data in game_data %}
+                    <tr>
+                        <td>
+                            <a href="{{ url_for('player_detail', player_id=player_data.player.id) }}" class="player-name">
+                                <i class="fas fa-user me-2"></i>{{ player_data.player.name }}
+                            </a>
+                        </td>
+                        <td style="text-align: right;">
+                            {% if player_data.net_profit > 0 %}
+                                <span class="profit-positive">
+                                    <i class="fas fa-plus-circle me-1"></i>${{ "%.2f"|format(player_data.net_profit) }}
+                                </span>
+                            {% elif player_data.net_profit < 0 %}
+                                <span class="profit-negative">
+                                    <i class="fas fa-minus-circle me-1"></i>${{ "%.2f"|format(player_data.net_profit|abs) }}
+                                </span>
+                            {% else %}
+                                <span class="profit-zero">
+                                    <i class="fas fa-equals me-1"></i>$0.00
+                                </span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="no-players">
+        <i class="fas fa-users-slash fa-3x mb-3 text-muted"></i>
+        <h3>No Players Found</h3>
+        <p>No player data found for this game date.</p>
+    </div>
+{% endif %}
+{% endblock %}

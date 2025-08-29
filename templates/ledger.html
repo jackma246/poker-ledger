@@ -1,0 +1,345 @@
+{% extends "base.html" %}
+
+{% block title %}Ledger - Poker Ledger{% endblock %}
+
+{% block head %}
+<style>
+.sortable {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.sortable:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.sortable i {
+    transition: all 0.2s ease;
+}
+
+.sortable:hover i {
+    color: #007bff !important;
+}
+
+.table th.sortable {
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table th.sortable:hover {
+    border-bottom-color: #007bff;
+}
+
+.positive {
+    color: #28a745;
+    font-weight: 500;
+}
+
+.negative {
+    color: #dc3545;
+    font-weight: 500;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-list me-2"></i>Current Ledger
+                </h5>
+                <div>
+                    <button onclick="exportData()" class="btn btn-warning btn-sm">
+                        <i class="fas fa-download me-1"></i>Export
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                {% if ledger_data %}
+                <div class="table-responsive">
+                    <table class="table table-hover" id="ledgerTable">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-sort="name">
+                                    Player Name
+                                    <i class="fas fa-sort text-muted ms-1"></i>
+                                </th>
+                                <th class="sortable" data-sort="balance">
+                                    Current Balance
+                                    <i class="fas fa-sort text-muted ms-1"></i>
+                                </th>
+                                <th class="sortable" data-sort="payment_method">
+                                    Payment Method
+                                    <i class="fas fa-sort text-muted ms-1"></i>
+                                </th>
+                                <th class="sortable" data-sort="last_game">
+                                    Last Game
+                                    <i class="fas fa-sort text-muted ms-1"></i>
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in ledger_data %}
+                            <tr>
+                                <td data-sort-value="{{ data.player.name.lower() }}">
+                                    <strong>{{ data.player.name }}</strong>
+                                </td>
+                                <td class="{{ 'positive' if data.remaining_payment >= 0 else 'negative' }}" 
+                                    data-sort-value="{{ data.remaining_payment }}">
+                                    {{ "${:,.2f}".format(data.remaining_payment) }}
+                                </td>
+                                <td data-sort-value="{% if data.player.preferred_payment_method %}{{ data.player.preferred_payment_method.lower() }}{% else %}not set{% endif %}">
+                                    {% if data.player.preferred_payment_method %}
+                                        <span class="badge bg-info">{{ data.player.preferred_payment_method }}</span>
+                                        {% if data.player.payment_id %}
+                                            <br><small class="text-muted">{{ data.player.payment_id }}</small>
+                                        {% endif %}
+                                    {% else %}
+                                        <span class="text-muted">Not set</span>
+                                    {% endif %}
+                                </td>
+                                <td data-sort-value="{{ data.latest_game.strftime('%Y-%m-%d') if data.latest_game else '1900-01-01' }}">
+                                    {% if data.latest_game %}
+                                        {{ data.latest_game.strftime('%Y-%m-%d') }}
+                                    {% else %}
+                                        <span class="text-muted">No games</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a href="{{ url_for('player_detail', player_id=data.player.id) }}" 
+                                           class="btn btn-outline-primary" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        {% if session.get('is_admin') %}
+                                        <button type="button" class="btn btn-outline-success" 
+                                                onclick="addPayment({{ data.player.id }}, '{{ data.player.name }}')" 
+                                                title="Record Payment">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                        {% if data.remaining_payment <= 0 %}
+                                        <button type="button" class="btn btn-outline-info" 
+                                                onclick="clearLedger({{ data.player.id }}, '{{ data.player.name }}')" 
+                                                title="Clear Ledger">
+                                            <i class="fas fa-check-double"></i>
+                                        </button>
+                                        {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+                {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                    <h5 class="text-muted">No ledger data available</h5>
+                    <p class="text-muted">Upload a CSV file to get started.</p>
+                    <a href="{{ url_for('upload_csv') }}" class="btn btn-primary">
+                        <i class="fas fa-upload me-2"></i>Upload CSV
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Record Payment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form id="paymentForm" method="POST" action="{{ url_for('add_payment') }}">
+                <div class="modal-body">
+                    <input type="hidden" id="payment_player_id" name="player_id">
+                    <div class="mb-3">
+                        <label for="payment_amount" class="form-label">Amount</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" id="payment_amount" name="amount" 
+                                   step="0.01" required>
+                        </div>
+                        <div class="form-text">
+                            Use positive amounts for player payments to bank. Use negative amounts for bank payouts to player.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="payment_date" class="form-label">Payment Date</label>
+                        <input type="date" class="form-control" id="payment_date" name="payment_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="payment_method" class="form-label">Payment Method (Optional)</label>
+                        <select class="form-select" id="payment_method" name="payment_method">
+                            <option value="">Not specified</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Venmo">Venmo</option>
+                            <option value="Zelle">Zelle</option>
+                            <option value="PayPal">PayPal</option>
+                            <option value="Check">Check</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success">Add Payment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Clear Ledger Modal -->
+<div class="modal fade" id="clearLedgerModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Clear Ledger</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to clear the ledger for <strong id="clear_player_name"></strong>?</p>
+                <p class="text-muted">This will move the player to history and remove all current ledger entries.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="{{ url_for('clear_ledger') }}" style="display: inline;">
+                    <input type="hidden" id="clear_player_id" name="player_id">
+                    <button type="submit" class="btn btn-danger">Clear Ledger</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Sorting functionality
+let currentSort = { column: null, direction: 'asc' };
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sortableHeaders = document.querySelectorAll('.sortable');
+    
+    sortableHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const column = this.dataset.sort;
+            const direction = (currentSort.column === column && currentSort.direction === 'asc') ? 'desc' : 'asc';
+            
+            // Update sort indicators
+            updateSortIndicators(column, direction);
+            
+            // Sort the table
+            sortTable(column, direction);
+            
+            // Update current sort state
+            currentSort = { column, direction };
+        });
+        
+        // Add hover effect
+        header.style.cursor = 'pointer';
+    });
+});
+
+function updateSortIndicators(activeColumn, direction) {
+    const headers = document.querySelectorAll('.sortable');
+    
+    headers.forEach(header => {
+        const icon = header.querySelector('i');
+        const column = header.dataset.sort;
+        
+        if (column === activeColumn) {
+            icon.className = direction === 'asc' ? 'fas fa-sort-up text-primary ms-1' : 'fas fa-sort-down text-primary ms-1';
+        } else {
+            icon.className = 'fas fa-sort text-muted ms-1';
+        }
+    });
+}
+
+function getColumnIndex(column) {
+    const columnMap = {
+        'name': 1,
+        'balance': 2,
+        'payment_method': 3,
+        'last_game': 4
+    };
+    return columnMap[column] || 1;
+}
+
+function sortTable(column, direction) {
+    const table = document.getElementById('ledgerTable');
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    
+    rows.sort((a, b) => {
+        const aValue = a.querySelector(`td:nth-child(${getColumnIndex(column)})`).dataset.sortValue;
+        const bValue = b.querySelector(`td:nth-child(${getColumnIndex(column)})`).dataset.sortValue;
+        
+        let comparison = 0;
+        
+        switch(column) {
+            case 'name':
+            case 'payment_method':
+                // String comparison (case-insensitive)
+                comparison = aValue.localeCompare(bValue);
+                break;
+            case 'balance':
+                // Numeric comparison
+                comparison = parseFloat(aValue) - parseFloat(bValue);
+                break;
+            case 'last_game':
+                // Date comparison
+                comparison = aValue.localeCompare(bValue);
+                break;
+        }
+        
+        return direction === 'asc' ? comparison : -comparison;
+    });
+    
+    // Re-append sorted rows
+    rows.forEach(row => tbody.appendChild(row));
+}
+
+function addPayment(playerId, playerName) {
+    document.getElementById('payment_player_id').value = playerId;
+    document.getElementById('payment_date').value = new Date().toISOString().split('T')[0];
+    
+    const modal = new bootstrap.Modal(document.getElementById('paymentModal'));
+    modal.show();
+}
+
+function clearLedger(playerId, playerName) {
+    document.getElementById('clear_player_id').value = playerId;
+    document.getElementById('clear_player_name').textContent = playerName;
+    
+    const modal = new bootstrap.Modal(document.getElementById('clearLedgerModal'));
+    modal.show();
+}
+
+function exportData() {
+    fetch('/export')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Data exported successfully! Check the uploads folder.');
+            } else {
+                alert('Export failed. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Export failed. Please try again.');
+        });
+}
+</script>
+{% endblock %} 

@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Poker Ledger{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-title mb-4">
+                    <i class="fas fa-poker-chip text-success me-3"></i>
+                    Welcome to Poker Ledger
+                    {% if session.get('is_admin') %}
+                    <span class="badge bg-warning text-dark ms-2">Admin Mode</span>
+                    {% endif %}
+                </h1>
+                <p class="card-text lead">
+                    Manage your poker game finances with ease. Track buy-ins, cash-outs, and player balances.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    {% if session.get('is_admin') %}
+    <div class="col-md-2">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-upload fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Upload CSV</h5>
+                <p class="card-text">Import game results from CSV files to update the ledger.</p>
+                <a href="{{ url_for('upload_csv') }}" class="btn btn-primary">
+                    <i class="fas fa-upload me-2"></i>Upload
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="col-md-2">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-list fa-3x text-success mb-3"></i>
+                <h5 class="card-title">View Ledger</h5>
+                <p class="card-text">See current balances and payment status for all players.</p>
+                <a href="{{ url_for('ledger') }}" class="btn btn-success">
+                    <i class="fas fa-list me-2"></i>View
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-2">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-calendar fa-3x text-warning mb-3"></i>
+                <h5 class="card-title">Game Calendar</h5>
+                <p class="card-text">Browse games by date and view detailed results.</p>
+                <a href="{{ url_for('calendar') }}" class="btn btn-warning">
+                    <i class="fas fa-calendar me-2"></i>Calendar
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-2">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-history fa-3x text-info mb-3"></i>
+                <h5 class="card-title">History</h5>
+                <p class="card-text">View cleared ledgers and historical payment records.</p>
+                <a href="{{ url_for('history') }}" class="btn btn-info">
+                    <i class="fas fa-history me-2"></i>History
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-2">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-download fa-3x text-secondary mb-3"></i>
+                <h5 class="card-title">Export Data</h5>
+                <p class="card-text">Download current ledger data as a CSV file.</p>
+                <button onclick="exportData()" class="btn btn-secondary">
+                    <i class="fas fa-download me-2"></i>Export
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-info-circle me-2"></i>How to Use
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>CSV Format Requirements:</h6>
+                        <ul>
+                            <li><strong>player_nickname</strong>: Player's name</li>
+                            <li><strong>net</strong>: Net profit/loss for the session</li>
+                            <li>Other columns (player_id, session_start_at, etc.) are optional</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Features:</h6>
+                        <ul>
+                            <li>Automatic player matching (case-insensitive)</li>
+                            <li>Running balance tracking</li>
+                            <li>Payment management</li>
+                            <li>Game calendar view</li>
+                            <li>Ledger history</li>
+                            <li>Data export</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function exportData() {
+    fetch('/export')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Data exported successfully! Check the uploads folder.');
+            } else {
+                alert('Export failed. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Export failed. Please try again.');
+        });
+}
+</script>
+{% endblock %} 

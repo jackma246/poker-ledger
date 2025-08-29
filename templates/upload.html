@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Upload CSV - Poker Ledger{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-upload me-2"></i>Upload CSV File
+                </h5>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Select CSV File</label>
+                        <input type="file" class="form-control" id="file" name="file" accept=".csv" required>
+                        <div class="form-text">
+                            The CSV file must contain <strong>player_nickname</strong> and <strong>net</strong> columns.
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="game_date" class="form-label">Game Date</label>
+                        <input type="date" class="form-control" id="game_date" name="game_date" required>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <h6><i class="fas fa-info-circle me-2"></i>CSV Format Requirements:</h6>
+                        <ul class="mb-0">
+                            <li><strong>player_nickname</strong>: Player's name (required)</li>
+                            <li><strong>net</strong>: Net profit/loss for the session in <strong>cents</strong> (required) - will be automatically converted to dollars</li>
+                            <li>Other columns like player_id, session_start_at, session_end_at, buy_in, buy_out, stack are optional</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <h6><i class="fas fa-exclamation-triangle me-2"></i>Important Note:</h6>
+                        <p class="mb-0">CSV values are expected to be in <strong>cents</strong> (e.g., 5000 = $50.00). The system will automatically convert them to dollars.</p>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-upload me-2"></i>Upload and Process
+                    </button>
+                    
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary ms-2">
+                        <i class="fas fa-arrow-left me-2"></i>Back
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-question-circle me-2"></i>Example CSV Format
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>player_nickname</th>
+                                <th>player_id</th>
+                                <th>session_start_at</th>
+                                <th>session_end_at</th>
+                                <th>buy_in</th>
+                                <th>buy_out</th>
+                                <th>stack</th>
+                                <th>net (cents)</th>
+                                <th>net (dollars)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John</td>
+                                <td>12345</td>
+                                <td>2024-01-15 19:00:00</td>
+                                <td>2024-01-15 23:00:00</td>
+                                <td>10000</td>
+                                <td>15000</td>
+                                <td>15000</td>
+                                <td>5000</td>
+                                <td>$50.00</td>
+                            </tr>
+                            <tr>
+                                <td>Sarah</td>
+                                <td>12346</td>
+                                <td>2024-01-15 19:00:00</td>
+                                <td>2024-01-15 23:00:00</td>
+                                <td>10000</td>
+                                <td>8000</td>
+                                <td>8000</td>
+                                <td>-2000</td>
+                                <td>-$20.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <small class="text-muted">
+                    Note: Only <strong>player_nickname</strong> and <strong>net</strong> columns are required. 
+                    The system will automatically match existing players (case-insensitive) or create new ones.
+                    Net values in cents are automatically converted to dollars.
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Set default date to today
+document.getElementById('game_date').value = new Date().toISOString().split('T')[0];
+</script>
+{% endblock %} 

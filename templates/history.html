@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Ledger History - Poker Ledger{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-history me-2"></i>Ledger History
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if history_entries %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Player Name</th>
+                                <th>Final Balance</th>
+                                <th>Cleared Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entry in history_entries %}
+                            <tr>
+                                <td>
+                                    <strong>{{ entry.player_name }}</strong>
+                                </td>
+                                <td class="{{ 'positive' if entry.final_balance >= 0 else 'negative' }}">
+                                    {{ "${:,.2f}".format(entry.final_balance) }}
+                                </td>
+                                <td>{{ entry.cleared_date.strftime('%Y-%m-%d') }}</td>
+                                <td>
+                                    {% if entry.final_balance == 0 %}
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-check me-1"></i>Paid in Full
+                                        </span>
+                                    {% elif entry.final_balance > 0 %}
+                                        <span class="badge bg-info">
+                                            <i class="fas fa-arrow-up me-1"></i>Owed Money
+                                        </span>
+                                    {% else %}
+                                        <span class="badge bg-warning">
+                                            <i class="fas fa-arrow-down me-1"></i>Owed Bank
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <h6 class="card-title">Total Cleared</h6>
+                                <h4 class="text-primary">{{ history_entries|length }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <h6 class="card-title">Paid in Full</h6>
+                                {% set paid_in_full = history_entries|selectattr('final_balance', 'equalto', 0)|list|length %}
+                                <h4 class="text-success">{{ paid_in_full }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <h6 class="card-title">Outstanding Balances</h6>
+                                {% set outstanding = history_entries|selectattr('final_balance', 'ne', 0)|list|length %}
+                                <h4 class="text-warning">{{ outstanding }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-history fa-3x text-muted mb-3"></i>
+                    <h5 class="text-muted">No ledger history available</h5>
+                    <p class="text-muted">Cleared ledgers will appear here.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

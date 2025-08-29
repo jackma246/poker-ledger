@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "name": "Arlen",
+    "preferred_payment_method": "Venmo",
+    "payment_id": "@j00n__",
+    "created_at": "2025-08-29T02:15:54.746141"
+  },
+  {
+    "id": 2,
+    "name": "DAVY",
+    "preferred_payment_method": "Venmo",
+    "payment_id": "@aftersalt",
+    "created_at": "2025-08-29T02:15:54.747175"
+  },
+  {
+    "id": 3,
+    "name": "Vinson",
+    "preferred_payment_method": "Venmo",
+    "payment_id": "@vinsonhfz",
+    "created_at": "2025-08-29T02:15:54.747516"
+  },
+  {
+    "id": 4,
+    "name": "Manny",
+    "preferred_payment_method": "Venmo",
+    "payment_id": "@Maninder-Malhi",
+    "created_at": "2025-08-29T02:15:54.747817"
+  },
+  {
+    "id": 5,
+    "name": "jack",
+    "preferred_payment_method": "Venmo",
+    "payment_id": "@jack-ma",
+    "created_at": "2025-08-29T02:15:54.748087"
+  },
+  {
+    "id": 6,
+    "name": "JR",
+    "preferred_payment_method": "Zelle",
+    "payment_id": "-",
+    "created_at": "2025-08-29T02:15:54.748428"
+  },
+  {
+    "id": 7,
+    "name": "Rahul",
+    "preferred_payment_method": "Venmo",
+    "payment_id": "@Rahul-Jindal-1",
+    "created_at": "2025-08-29T02:15:54.748791"
+  },
+  {
+    "id": 8,
+    "name": "Justin",
+    "preferred_payment_method": null,
+    "payment_id": null,
+    "created_at": "2025-08-29T02:15:54.749139"
+  },
+  {
+    "id": 9,
+    "name": "Euen",
+    "preferred_payment_method": null,
+    "payment_id": null,
+    "created_at": "2025-08-29T02:15:54.749485"
+  },
+  {
+    "id": 10,
+    "name": "Tam",
+    "preferred_payment_method": null,
+    "payment_id": null,
+    "created_at": "2025-08-29T02:15:54.749805"
+  },
+  {
+    "id": 11,
+    "name": "Mike",
+    "preferred_payment_method": null,
+    "payment_id": null,
+    "created_at": "2025-08-29T02:15:54.750102"
+  },
+  {
+    "id": 12,
+    "name": "host",
+    "preferred_payment_method": null,
+    "payment_id": null,
+    "created_at": "2025-08-29T02:15:54.750321"
+  },
+  {
+    "id": 13,
+    "name": "ken",
+    "preferred_payment_method": null,
+    "payment_id": null,
+    "created_at": "2025-08-29T02:15:54.750474"
+  },
+  {
+    "id": 14,
+    "name": "Wong Tao",
+    "preferred_payment_method": null,
+    "payment_id": null,
+    "created_at": "2025-08-29T02:15:54.750618"
+  },
+  {
+    "id": 15,
+    "name": "Michael Lam",
+    "preferred_payment_method": null,
+    "payment_id": null,
+    "created_at": "2025-08-29T02:15:54.750759"
+  },
+  {
+    "id": 16,
+    "name": "Ziran",
+    "preferred_payment_method": null,
+    "payment_id": null,
+    "created_at": "2025-08-29T02:15:54.750900"
+  },
+  {
+    "id": 17,
+    "name": "Minh",
+    "preferred_payment_method": null,
+    "payment_id": null,
+    "created_at": "2025-08-29T02:15:54.751041"
+  },
+  {
+    "id": 18,
+    "name": "Mark",
+    "preferred_payment_method": null,
+    "payment_id": null,
+    "created_at": "2025-08-29T02:15:54.751181"
+  }
+]

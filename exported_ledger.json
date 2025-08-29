@@ -1,0 +1,442 @@
+[
+  {
+    "id": 1,
+    "player_id": 1,
+    "game_date": "2025-08-20",
+    "net_profit": -172.93,
+    "running_balance": -172.93,
+    "created_at": "2025-08-29T02:15:54.755870"
+  },
+  {
+    "id": 2,
+    "player_id": 2,
+    "game_date": "2025-08-20",
+    "net_profit": -41.209999999999994,
+    "running_balance": -41.209999999999994,
+    "created_at": "2025-08-29T02:15:54.755871"
+  },
+  {
+    "id": 3,
+    "player_id": 3,
+    "game_date": "2025-08-20",
+    "net_profit": 105.94999999999999,
+    "running_balance": 105.94999999999999,
+    "created_at": "2025-08-29T02:15:54.755871"
+  },
+  {
+    "id": 4,
+    "player_id": 4,
+    "game_date": "2025-08-20",
+    "net_profit": -38.0,
+    "running_balance": -38.0,
+    "created_at": "2025-08-29T02:15:54.755872"
+  },
+  {
+    "id": 5,
+    "player_id": 5,
+    "game_date": "2025-08-20",
+    "net_profit": 128.45,
+    "running_balance": 128.45,
+    "created_at": "2025-08-29T02:15:54.755872"
+  },
+  {
+    "id": 6,
+    "player_id": 6,
+    "game_date": "2025-08-20",
+    "net_profit": 60.72,
+    "running_balance": 60.72,
+    "created_at": "2025-08-29T02:15:54.755872"
+  },
+  {
+    "id": 7,
+    "player_id": 7,
+    "game_date": "2025-08-20",
+    "net_profit": -42.98,
+    "running_balance": -42.98,
+    "created_at": "2025-08-29T02:15:54.755875"
+  },
+  {
+    "id": 8,
+    "player_id": 8,
+    "game_date": "2025-08-21",
+    "net_profit": 40.05,
+    "running_balance": 40.05,
+    "created_at": "2025-08-29T02:15:54.755876"
+  },
+  {
+    "id": 9,
+    "player_id": 9,
+    "game_date": "2025-08-21",
+    "net_profit": -628.46,
+    "running_balance": -628.46,
+    "created_at": "2025-08-29T02:15:54.755876"
+  },
+  {
+    "id": 10,
+    "player_id": 10,
+    "game_date": "2025-08-21",
+    "net_profit": 3.38,
+    "running_balance": 3.38,
+    "created_at": "2025-08-29T02:15:54.755876"
+  },
+  {
+    "id": 11,
+    "player_id": 11,
+    "game_date": "2025-08-21",
+    "net_profit": 20.31,
+    "running_balance": 20.31,
+    "created_at": "2025-08-29T02:15:54.755879"
+  },
+  {
+    "id": 12,
+    "player_id": 12,
+    "game_date": "2025-08-21",
+    "net_profit": 0.0,
+    "running_balance": 0.0,
+    "created_at": "2025-08-29T02:15:54.755880"
+  },
+  {
+    "id": 13,
+    "player_id": 7,
+    "game_date": "2025-08-21",
+    "net_profit": -542.42,
+    "running_balance": -585.4,
+    "created_at": "2025-08-29T02:15:54.755880"
+  },
+  {
+    "id": 14,
+    "player_id": 5,
+    "game_date": "2025-08-21",
+    "net_profit": -461.56,
+    "running_balance": -333.11,
+    "created_at": "2025-08-29T02:15:54.755882"
+  },
+  {
+    "id": 15,
+    "player_id": 2,
+    "game_date": "2025-08-21",
+    "net_profit": -394.07,
+    "running_balance": -435.28,
+    "created_at": "2025-08-29T02:15:54.755885"
+  },
+  {
+    "id": 16,
+    "player_id": 3,
+    "game_date": "2025-08-21",
+    "net_profit": 2065.15,
+    "running_balance": 2171.1,
+    "created_at": "2025-08-29T02:15:54.755886"
+  },
+  {
+    "id": 17,
+    "player_id": 4,
+    "game_date": "2025-08-21",
+    "net_profit": -102.38,
+    "running_balance": -140.38,
+    "created_at": "2025-08-29T02:15:54.755886"
+  },
+  {
+    "id": 18,
+    "player_id": 13,
+    "game_date": "2025-08-24",
+    "net_profit": 185.04999999999995,
+    "running_balance": 185.04999999999995,
+    "created_at": "2025-08-29T02:15:54.755887"
+  },
+  {
+    "id": 19,
+    "player_id": 14,
+    "game_date": "2025-08-24",
+    "net_profit": -1418.88,
+    "running_balance": -1418.88,
+    "created_at": "2025-08-29T02:15:54.755887"
+  },
+  {
+    "id": 20,
+    "player_id": 7,
+    "game_date": "2025-08-24",
+    "net_profit": 24.5,
+    "running_balance": -560.9,
+    "created_at": "2025-08-29T02:15:54.755887"
+  },
+  {
+    "id": 21,
+    "player_id": 11,
+    "game_date": "2025-08-24",
+    "net_profit": 331.05,
+    "running_balance": 351.36,
+    "created_at": "2025-08-29T02:15:54.755887"
+  },
+  {
+    "id": 22,
+    "player_id": 8,
+    "game_date": "2025-08-24",
+    "net_profit": 320.0,
+    "running_balance": 360.05,
+    "created_at": "2025-08-29T02:15:54.755888"
+  },
+  {
+    "id": 23,
+    "player_id": 12,
+    "game_date": "2025-08-24",
+    "net_profit": -0.01,
+    "running_balance": -0.01,
+    "created_at": "2025-08-29T02:15:54.755888"
+  },
+  {
+    "id": 24,
+    "player_id": 2,
+    "game_date": "2025-08-24",
+    "net_profit": 362.85,
+    "running_balance": -72.42999999999995,
+    "created_at": "2025-08-29T02:15:54.755888"
+  },
+  {
+    "id": 25,
+    "player_id": 3,
+    "game_date": "2025-08-24",
+    "net_profit": 330.21,
+    "running_balance": 2501.31,
+    "created_at": "2025-08-29T02:15:54.755889"
+  },
+  {
+    "id": 26,
+    "player_id": 5,
+    "game_date": "2025-08-24",
+    "net_profit": 412.9,
+    "running_balance": 79.78999999999996,
+    "created_at": "2025-08-29T02:15:54.755891"
+  },
+  {
+    "id": 27,
+    "player_id": 9,
+    "game_date": "2025-08-24",
+    "net_profit": -547.67,
+    "running_balance": -1176.13,
+    "created_at": "2025-08-29T02:15:54.755894"
+  },
+  {
+    "id": 28,
+    "player_id": 15,
+    "game_date": "2025-08-25",
+    "net_profit": -1300.0,
+    "running_balance": -1300.0,
+    "created_at": "2025-08-29T02:15:54.755895"
+  },
+  {
+    "id": 29,
+    "player_id": 16,
+    "game_date": "2025-08-25",
+    "net_profit": 1638.4099999999999,
+    "running_balance": 1638.4099999999999,
+    "created_at": "2025-08-29T02:15:54.755895"
+  },
+  {
+    "id": 30,
+    "player_id": 17,
+    "game_date": "2025-08-25",
+    "net_profit": 111.5,
+    "running_balance": 111.5,
+    "created_at": "2025-08-29T02:15:54.755897"
+  },
+  {
+    "id": 31,
+    "player_id": 18,
+    "game_date": "2025-08-25",
+    "net_profit": 237.98,
+    "running_balance": 237.98,
+    "created_at": "2025-08-29T02:15:54.755900"
+  },
+  {
+    "id": 32,
+    "player_id": 7,
+    "game_date": "2025-08-25",
+    "net_profit": -3458.63,
+    "running_balance": -4019.53,
+    "created_at": "2025-08-29T02:15:54.755901"
+  },
+  {
+    "id": 33,
+    "player_id": 2,
+    "game_date": "2025-08-25",
+    "net_profit": 799.25,
+    "running_balance": 726.82,
+    "created_at": "2025-08-29T02:15:54.755901"
+  },
+  {
+    "id": 34,
+    "player_id": 9,
+    "game_date": "2025-08-25",
+    "net_profit": 395.75,
+    "running_balance": -780.3800000000001,
+    "created_at": "2025-08-29T02:15:54.755901"
+  },
+  {
+    "id": 35,
+    "player_id": 11,
+    "game_date": "2025-08-25",
+    "net_profit": -376.78,
+    "running_balance": -25.41999999999996,
+    "created_at": "2025-08-29T02:15:54.755901"
+  },
+  {
+    "id": 36,
+    "player_id": 5,
+    "game_date": "2025-08-25",
+    "net_profit": 1952.52,
+    "running_balance": 2032.31,
+    "created_at": "2025-08-29T02:15:54.755902"
+  },
+  {
+    "id": 37,
+    "player_id": 12,
+    "game_date": "2025-08-25",
+    "net_profit": 0.0,
+    "running_balance": -0.01,
+    "created_at": "2025-08-29T02:15:54.755902"
+  },
+  {
+    "id": 38,
+    "player_id": 18,
+    "game_date": "2025-08-26",
+    "net_profit": -768.43,
+    "running_balance": -530.4499999999999,
+    "created_at": "2025-08-29T02:15:54.755904"
+  },
+  {
+    "id": 39,
+    "player_id": 16,
+    "game_date": "2025-08-26",
+    "net_profit": 1438.32,
+    "running_balance": 3076.7299999999996,
+    "created_at": "2025-08-29T02:15:54.755905"
+  },
+  {
+    "id": 40,
+    "player_id": 6,
+    "game_date": "2025-08-26",
+    "net_profit": -200.0,
+    "running_balance": -139.28,
+    "created_at": "2025-08-29T02:15:54.755905"
+  },
+  {
+    "id": 41,
+    "player_id": 1,
+    "game_date": "2025-08-26",
+    "net_profit": -400.0,
+    "running_balance": -572.9300000000001,
+    "created_at": "2025-08-29T02:15:54.755905"
+  },
+  {
+    "id": 42,
+    "player_id": 17,
+    "game_date": "2025-08-26",
+    "net_profit": 199.94,
+    "running_balance": 311.44,
+    "created_at": "2025-08-29T02:15:54.755907"
+  },
+  {
+    "id": 43,
+    "player_id": 3,
+    "game_date": "2025-08-26",
+    "net_profit": 485.24,
+    "running_balance": 2986.55,
+    "created_at": "2025-08-29T02:15:54.755908"
+  },
+  {
+    "id": 44,
+    "player_id": 2,
+    "game_date": "2025-08-26",
+    "net_profit": -286.31,
+    "running_balance": 440.51000000000005,
+    "created_at": "2025-08-29T02:15:54.755908"
+  },
+  {
+    "id": 45,
+    "player_id": 7,
+    "game_date": "2025-08-26",
+    "net_profit": -1982.91,
+    "running_balance": -6002.4400000000005,
+    "created_at": "2025-08-29T02:15:54.755908"
+  },
+  {
+    "id": 46,
+    "player_id": 5,
+    "game_date": "2025-08-26",
+    "net_profit": 362.11,
+    "running_balance": 2394.42,
+    "created_at": "2025-08-29T02:15:54.755909"
+  },
+  {
+    "id": 47,
+    "player_id": 11,
+    "game_date": "2025-08-26",
+    "net_profit": 327.46,
+    "running_balance": 302.04,
+    "created_at": "2025-08-29T02:15:54.755911"
+  },
+  {
+    "id": 48,
+    "player_id": 9,
+    "game_date": "2025-08-26",
+    "net_profit": 824.58,
+    "running_balance": 44.19999999999993,
+    "created_at": "2025-08-29T02:15:54.755914"
+  },
+  {
+    "id": 49,
+    "player_id": 12,
+    "game_date": "2025-08-26",
+    "net_profit": 0.0,
+    "running_balance": -0.01,
+    "created_at": "2025-08-29T02:15:54.755914"
+  },
+  {
+    "id": 50,
+    "player_id": 18,
+    "game_date": "2025-08-27",
+    "net_profit": 78.75,
+    "running_balance": -451.69999999999993,
+    "created_at": "2025-08-29T02:15:54.755915"
+  },
+  {
+    "id": 51,
+    "player_id": 11,
+    "game_date": "2025-08-27",
+    "net_profit": 18.62,
+    "running_balance": 320.66,
+    "created_at": "2025-08-29T02:15:54.755915"
+  },
+  {
+    "id": 52,
+    "player_id": 2,
+    "game_date": "2025-08-27",
+    "net_profit": -62.75,
+    "running_balance": 377.76000000000005,
+    "created_at": "2025-08-29T02:15:54.755917"
+  },
+  {
+    "id": 53,
+    "player_id": 9,
+    "game_date": "2025-08-27",
+    "net_profit": -569.75,
+    "running_balance": -525.5500000000001,
+    "created_at": "2025-08-29T02:15:54.755918"
+  },
+  {
+    "id": 54,
+    "player_id": 3,
+    "game_date": "2025-08-27",
+    "net_profit": -100.0,
+    "running_balance": 2886.55,
+    "created_at": "2025-08-29T02:15:54.755918"
+  },
+  {
+    "id": 55,
+    "player_id": 5,
+    "game_date": "2025-08-27",
+    "net_profit": 635.13,
+    "running_balance": 3029.55,
+    "created_at": "2025-08-29T02:15:54.755920"
+  }
+]

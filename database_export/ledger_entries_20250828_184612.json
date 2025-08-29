@@ -1,0 +1,387 @@
+[
+  {
+    "player_name": "Arlen",
+    "game_date": "2025-08-20",
+    "net_profit": -172.93,
+    "running_balance": -172.93,
+    "created_at": "2025-08-21T03:40:58.005667"
+  },
+  {
+    "player_name": "DAVY",
+    "game_date": "2025-08-20",
+    "net_profit": -41.209999999999994,
+    "running_balance": -41.209999999999994,
+    "created_at": "2025-08-21T03:40:58.010908"
+  },
+  {
+    "player_name": "Vinson",
+    "game_date": "2025-08-20",
+    "net_profit": 105.94999999999999,
+    "running_balance": 105.94999999999999,
+    "created_at": "2025-08-21T03:40:58.012760"
+  },
+  {
+    "player_name": "Manny",
+    "game_date": "2025-08-20",
+    "net_profit": -38.0,
+    "running_balance": -38.0,
+    "created_at": "2025-08-21T03:40:58.014545"
+  },
+  {
+    "player_name": "jack",
+    "game_date": "2025-08-20",
+    "net_profit": 128.45,
+    "running_balance": 128.45,
+    "created_at": "2025-08-21T03:40:58.016004"
+  },
+  {
+    "player_name": "JR",
+    "game_date": "2025-08-20",
+    "net_profit": 60.72,
+    "running_balance": 60.72,
+    "created_at": "2025-08-21T03:40:58.017099"
+  },
+  {
+    "player_name": "Rahul",
+    "game_date": "2025-08-20",
+    "net_profit": -42.98,
+    "running_balance": -42.98,
+    "created_at": "2025-08-21T03:40:58.018262"
+  },
+  {
+    "player_name": "Justin",
+    "game_date": "2025-08-21",
+    "net_profit": 40.05,
+    "running_balance": 40.05,
+    "created_at": "2025-08-22T07:22:22.646624"
+  },
+  {
+    "player_name": "Euen",
+    "game_date": "2025-08-21",
+    "net_profit": -628.46,
+    "running_balance": -628.46,
+    "created_at": "2025-08-22T07:22:22.648538"
+  },
+  {
+    "player_name": "Tam",
+    "game_date": "2025-08-21",
+    "net_profit": 3.38,
+    "running_balance": 3.38,
+    "created_at": "2025-08-22T07:22:22.649912"
+  },
+  {
+    "player_name": "Mike",
+    "game_date": "2025-08-21",
+    "net_profit": 20.31,
+    "running_balance": 20.31,
+    "created_at": "2025-08-22T07:22:22.651199"
+  },
+  {
+    "player_name": "host",
+    "game_date": "2025-08-21",
+    "net_profit": 0.0,
+    "running_balance": 0.0,
+    "created_at": "2025-08-22T07:22:22.652776"
+  },
+  {
+    "player_name": "Rahul",
+    "game_date": "2025-08-21",
+    "net_profit": -542.42,
+    "running_balance": -585.4,
+    "created_at": "2025-08-22T07:22:22.654149"
+  },
+  {
+    "player_name": "jack",
+    "game_date": "2025-08-21",
+    "net_profit": -461.56,
+    "running_balance": -333.11,
+    "created_at": "2025-08-22T07:22:22.655166"
+  },
+  {
+    "player_name": "DAVY",
+    "game_date": "2025-08-21",
+    "net_profit": -394.07,
+    "running_balance": -435.28,
+    "created_at": "2025-08-22T07:22:22.655806"
+  },
+  {
+    "player_name": "Vinson",
+    "game_date": "2025-08-21",
+    "net_profit": 2065.15,
+    "running_balance": 2171.1,
+    "created_at": "2025-08-22T07:22:22.656421"
+  },
+  {
+    "player_name": "Manny",
+    "game_date": "2025-08-21",
+    "net_profit": -102.38,
+    "running_balance": -140.38,
+    "created_at": "2025-08-22T07:22:22.656866"
+  },
+  {
+    "player_name": "ken",
+    "game_date": "2025-08-24",
+    "net_profit": 185.04999999999995,
+    "running_balance": 185.04999999999995,
+    "created_at": "2025-08-24T07:02:52.719985"
+  },
+  {
+    "player_name": "Wong Tao",
+    "game_date": "2025-08-24",
+    "net_profit": -1418.88,
+    "running_balance": -1418.88,
+    "created_at": "2025-08-24T07:02:52.724073"
+  },
+  {
+    "player_name": "Rahul",
+    "game_date": "2025-08-24",
+    "net_profit": 24.5,
+    "running_balance": -560.9,
+    "created_at": "2025-08-24T07:02:52.728541"
+  },
+  {
+    "player_name": "Mike",
+    "game_date": "2025-08-24",
+    "net_profit": 331.05,
+    "running_balance": 351.36,
+    "created_at": "2025-08-24T07:02:52.729767"
+  },
+  {
+    "player_name": "Justin",
+    "game_date": "2025-08-24",
+    "net_profit": 320.0,
+    "running_balance": 360.05,
+    "created_at": "2025-08-24T07:02:52.730670"
+  },
+  {
+    "player_name": "host",
+    "game_date": "2025-08-24",
+    "net_profit": -0.01,
+    "running_balance": -0.01,
+    "created_at": "2025-08-24T07:02:52.731589"
+  },
+  {
+    "player_name": "DAVY",
+    "game_date": "2025-08-24",
+    "net_profit": 362.85,
+    "running_balance": -72.42999999999995,
+    "created_at": "2025-08-24T07:02:52.732552"
+  },
+  {
+    "player_name": "Vinson",
+    "game_date": "2025-08-24",
+    "net_profit": 330.21,
+    "running_balance": 2501.31,
+    "created_at": "2025-08-24T07:02:52.733675"
+  },
+  {
+    "player_name": "jack",
+    "game_date": "2025-08-24",
+    "net_profit": 412.9,
+    "running_balance": 79.78999999999996,
+    "created_at": "2025-08-24T07:02:52.734535"
+  },
+  {
+    "player_name": "Euen",
+    "game_date": "2025-08-24",
+    "net_profit": -547.67,
+    "running_balance": -1176.13,
+    "created_at": "2025-08-24T07:02:52.735235"
+  },
+  {
+    "player_name": "Michael Lam",
+    "game_date": "2025-08-25",
+    "net_profit": -1300.0,
+    "running_balance": -1300.0,
+    "created_at": "2025-08-25T16:01:08.043891"
+  },
+  {
+    "player_name": "Ziran",
+    "game_date": "2025-08-25",
+    "net_profit": 1638.4099999999999,
+    "running_balance": 1638.4099999999999,
+    "created_at": "2025-08-25T16:01:08.046329"
+  },
+  {
+    "player_name": "Minh",
+    "game_date": "2025-08-25",
+    "net_profit": 111.5,
+    "running_balance": 111.5,
+    "created_at": "2025-08-25T16:01:08.048336"
+  },
+  {
+    "player_name": "Mark",
+    "game_date": "2025-08-25",
+    "net_profit": 237.98,
+    "running_balance": 237.98,
+    "created_at": "2025-08-25T16:01:08.050075"
+  },
+  {
+    "player_name": "Rahul",
+    "game_date": "2025-08-25",
+    "net_profit": -3458.63,
+    "running_balance": -4019.53,
+    "created_at": "2025-08-25T16:01:08.051195"
+  },
+  {
+    "player_name": "DAVY",
+    "game_date": "2025-08-25",
+    "net_profit": 799.25,
+    "running_balance": 726.82,
+    "created_at": "2025-08-25T16:01:08.052135"
+  },
+  {
+    "player_name": "Euen",
+    "game_date": "2025-08-25",
+    "net_profit": 395.75,
+    "running_balance": -780.3800000000001,
+    "created_at": "2025-08-25T16:01:08.052942"
+  },
+  {
+    "player_name": "Mike",
+    "game_date": "2025-08-25",
+    "net_profit": -376.78,
+    "running_balance": -25.41999999999996,
+    "created_at": "2025-08-25T16:01:08.053692"
+  },
+  {
+    "player_name": "jack",
+    "game_date": "2025-08-25",
+    "net_profit": 1952.52,
+    "running_balance": 2032.31,
+    "created_at": "2025-08-25T16:01:08.054491"
+  },
+  {
+    "player_name": "host",
+    "game_date": "2025-08-25",
+    "net_profit": 0.0,
+    "running_balance": -0.01,
+    "created_at": "2025-08-25T16:01:08.055188"
+  },
+  {
+    "player_name": "Mark",
+    "game_date": "2025-08-26",
+    "net_profit": -768.43,
+    "running_balance": -530.4499999999999,
+    "created_at": "2025-08-27T07:07:22.596366"
+  },
+  {
+    "player_name": "Ziran",
+    "game_date": "2025-08-26",
+    "net_profit": 1438.32,
+    "running_balance": 3076.7299999999996,
+    "created_at": "2025-08-27T07:07:22.600213"
+  },
+  {
+    "player_name": "JR",
+    "game_date": "2025-08-26",
+    "net_profit": -200.0,
+    "running_balance": -139.28,
+    "created_at": "2025-08-27T07:07:22.601038"
+  },
+  {
+    "player_name": "Arlen",
+    "game_date": "2025-08-26",
+    "net_profit": -400.0,
+    "running_balance": -572.9300000000001,
+    "created_at": "2025-08-27T07:07:22.601792"
+  },
+  {
+    "player_name": "Minh",
+    "game_date": "2025-08-26",
+    "net_profit": 199.94,
+    "running_balance": 311.44,
+    "created_at": "2025-08-27T07:07:22.602681"
+  },
+  {
+    "player_name": "Vinson",
+    "game_date": "2025-08-26",
+    "net_profit": 485.24,
+    "running_balance": 2986.55,
+    "created_at": "2025-08-27T07:07:22.603580"
+  },
+  {
+    "player_name": "DAVY",
+    "game_date": "2025-08-26",
+    "net_profit": -286.31,
+    "running_balance": 440.51000000000005,
+    "created_at": "2025-08-27T07:07:22.604423"
+  },
+  {
+    "player_name": "Rahul",
+    "game_date": "2025-08-26",
+    "net_profit": -1982.91,
+    "running_balance": -6002.4400000000005,
+    "created_at": "2025-08-27T07:07:22.605457"
+  },
+  {
+    "player_name": "jack",
+    "game_date": "2025-08-26",
+    "net_profit": 362.11,
+    "running_balance": 2394.42,
+    "created_at": "2025-08-27T07:07:22.606438"
+  },
+  {
+    "player_name": "Mike",
+    "game_date": "2025-08-26",
+    "net_profit": 327.46,
+    "running_balance": 302.04,
+    "created_at": "2025-08-27T07:07:22.607359"
+  },
+  {
+    "player_name": "Euen",
+    "game_date": "2025-08-26",
+    "net_profit": 824.58,
+    "running_balance": 44.19999999999993,
+    "created_at": "2025-08-27T07:07:22.608240"
+  },
+  {
+    "player_name": "host",
+    "game_date": "2025-08-26",
+    "net_profit": 0.0,
+    "running_balance": -0.01,
+    "created_at": "2025-08-27T07:07:22.608801"
+  },
+  {
+    "player_name": "Mark",
+    "game_date": "2025-08-27",
+    "net_profit": 78.75,
+    "running_balance": -451.69999999999993,
+    "created_at": "2025-08-28T07:18:59.591152"
+  },
+  {
+    "player_name": "Mike",
+    "game_date": "2025-08-27",
+    "net_profit": 18.62,
+    "running_balance": 320.66,
+    "created_at": "2025-08-28T07:18:59.593719"
+  },
+  {
+    "player_name": "DAVY",
+    "game_date": "2025-08-27",
+    "net_profit": -62.75,
+    "running_balance": 377.76000000000005,
+    "created_at": "2025-08-28T07:18:59.594739"
+  },
+  {
+    "player_name": "Euen",
+    "game_date": "2025-08-27",
+    "net_profit": -569.75,
+    "running_balance": -525.5500000000001,
+    "created_at": "2025-08-28T07:18:59.596191"
+  },
+  {
+    "player_name": "Vinson",
+    "game_date": "2025-08-27",
+    "net_profit": -100.0,
+    "running_balance": 2886.55,
+    "created_at": "2025-08-28T07:18:59.597070"
+  },
+  {
+    "player_name": "jack",
+    "game_date": "2025-08-27",
+    "net_profit": 635.13,
+    "running_balance": 3029.55,
+    "created_at": "2025-08-28T07:18:59.597891"
+  }
+]

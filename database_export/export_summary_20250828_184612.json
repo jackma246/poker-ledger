@@ -1,0 +1,13 @@
+{
+  "export_date": "2025-08-28T18:46:12.383620",
+  "players_count": 18,
+  "ledger_entries_count": 55,
+  "payments_count": 27,
+  "history_count": 0,
+  "files": [
+    "players_20250828_184612.json",
+    "ledger_entries_20250828_184612.json",
+    "payments_20250828_184612.json",
+    "history_20250828_184612.json"
+  ]
+}

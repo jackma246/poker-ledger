@@ -1,0 +1,191 @@
+[
+  {
+    "player_name": "Arlen",
+    "amount": 172.93,
+    "payment_date": "2025-08-21",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-21T03:41:38.925977"
+  },
+  {
+    "player_name": "DAVY",
+    "amount": 41.21,
+    "payment_date": "2025-08-21",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-21T03:43:10.979536"
+  },
+  {
+    "player_name": "Manny",
+    "amount": 38.0,
+    "payment_date": "2025-08-21",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-21T03:45:09.374936"
+  },
+  {
+    "player_name": "Vinson",
+    "amount": -105.95,
+    "payment_date": "2025-08-21",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-21T03:53:01.443305"
+  },
+  {
+    "player_name": "jack",
+    "amount": -128.45,
+    "payment_date": "2025-08-21",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-21T03:53:32.078332"
+  },
+  {
+    "player_name": "JR",
+    "amount": -60.72,
+    "payment_date": "2025-08-21",
+    "payment_method": "Zelle",
+    "created_at": "2025-08-21T03:53:44.396428"
+  },
+  {
+    "player_name": "Rahul",
+    "amount": 42.98,
+    "payment_date": "2025-08-21",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-21T03:53:53.995102"
+  },
+  {
+    "player_name": "Rahul",
+    "amount": 542.42,
+    "payment_date": "2025-08-22",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-22T07:24:06.995378"
+  },
+  {
+    "player_name": "Manny",
+    "amount": 102.38,
+    "payment_date": "2025-08-23",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-23T05:49:32.703717"
+  },
+  {
+    "player_name": "Justin",
+    "amount": 40.05,
+    "payment_date": "2025-08-24",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-24T02:00:16.471360"
+  },
+  {
+    "player_name": "Justin",
+    "amount": -80.1,
+    "payment_date": "2025-08-24",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-24T02:00:30.353626"
+  },
+  {
+    "player_name": "DAVY",
+    "amount": 394.07,
+    "payment_date": "2025-08-24",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-24T02:04:26.417299"
+  },
+  {
+    "player_name": "Euen",
+    "amount": 628.46,
+    "payment_date": "2025-08-24",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-24T07:04:09.686205"
+  },
+  {
+    "player_name": "host",
+    "amount": 0.01,
+    "payment_date": "2025-08-24",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-24T07:04:22.698956"
+  },
+  {
+    "player_name": "Wong Tao",
+    "amount": 1418.88,
+    "payment_date": "2025-08-24",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-24T07:05:00.183742"
+  },
+  {
+    "player_name": "Vinson",
+    "amount": -1418.88,
+    "payment_date": "2025-08-24",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-24T07:05:12.137443"
+  },
+  {
+    "player_name": "jack",
+    "amount": -1627.24,
+    "payment_date": "2025-08-25",
+    "payment_method": "",
+    "created_at": "2025-08-25T16:08:38.719313"
+  },
+  {
+    "player_name": "Michael Lam",
+    "amount": 1300.0,
+    "payment_date": "2025-08-25",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-25T18:26:23.951578"
+  },
+  {
+    "player_name": "Ziran",
+    "amount": -1638.41,
+    "payment_date": "2025-08-26",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-26T07:31:27.767932"
+  },
+  {
+    "player_name": "Rahul",
+    "amount": 1638.41,
+    "payment_date": "2025-08-26",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-26T07:31:48.434802"
+  },
+  {
+    "player_name": "Vinson",
+    "amount": -976.48,
+    "payment_date": "2025-08-26",
+    "payment_method": "",
+    "created_at": "2025-08-26T16:29:49.731063"
+  },
+  {
+    "player_name": "Rahul",
+    "amount": 1795.72,
+    "payment_date": "2025-08-26",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-26T16:30:21.387800"
+  },
+  {
+    "player_name": "DAVY",
+    "amount": -1162.1,
+    "payment_date": "2025-08-26",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-26T16:31:16.456259"
+  },
+  {
+    "player_name": "jack",
+    "amount": -276.62,
+    "payment_date": "2025-08-26",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-26T16:44:21.745931"
+  },
+  {
+    "player_name": "Ziran",
+    "amount": -1438.32,
+    "payment_date": "2025-08-27",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-27T16:02:41.679845"
+  },
+  {
+    "player_name": "Rahul",
+    "amount": 1438.32,
+    "payment_date": "2025-08-27",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-27T16:02:50.168629"
+  },
+  {
+    "player_name": "Rahul",
+    "amount": 550.0,
+    "payment_date": "2025-08-27",
+    "payment_method": "Venmo",
+    "created_at": "2025-08-27T16:03:03.919237"
+  }
+]

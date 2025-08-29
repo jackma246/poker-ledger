@@ -1,5 +1,5 @@
 import os
-from app import app, db, Player, LedgerEntry, Payment, GameHistory
+from app import app, db, Player, LedgerEntry, Payment
 from datetime import datetime
 
 def run_migration_if_needed():
@@ -13,14 +13,14 @@ def run_migration_if_needed():
                 
                 # Create players
                 players_data = [
-                    {"name": "Jacob", "email": "jacob@example.com"},
-                    {"name": "Alex", "email": "alex@example.com"},
-                    {"name": "Sam", "email": "sam@example.com"},
-                    {"name": "Jordan", "email": "jordan@example.com"},
-                    {"name": "Casey", "email": "casey@example.com"},
-                    {"name": "Taylor", "email": "taylor@example.com"},
-                    {"name": "Morgan", "email": "morgan@example.com"},
-                    {"name": "Riley", "email": "riley@example.com"}
+                    {"name": "Jacob"},
+                    {"name": "Alex"},
+                    {"name": "Sam"},
+                    {"name": "Jordan"},
+                    {"name": "Casey"},
+                    {"name": "Taylor"},
+                    {"name": "Morgan"},
+                    {"name": "Riley"}
                 ]
                 
                 for player_data in players_data:
@@ -30,24 +30,16 @@ def run_migration_if_needed():
                 db.session.commit()
                 print(f"Added {len(players_data)} players")
                 
-                # Create ledger entries
+                # Create ledger entries (using correct field names)
                 ledger_data = [
-                    {"player_id": 1, "amount": 50.0, "description": "Buy-in", "date": datetime(2024, 1, 15)},
-                    {"player_id": 2, "amount": 75.0, "description": "Buy-in", "date": datetime(2024, 1, 15)},
-                    {"player_id": 3, "amount": 100.0, "description": "Buy-in", "date": datetime(2024, 1, 15)},
-                    {"player_id": 4, "amount": 25.0, "description": "Buy-in", "date": datetime(2024, 1, 15)},
-                    {"player_id": 5, "amount": 60.0, "description": "Buy-in", "date": datetime(2024, 1, 15)},
-                    {"player_id": 6, "amount": 40.0, "description": "Buy-in", "date": datetime(2024, 1, 15)},
-                    {"player_id": 7, "amount": 80.0, "description": "Buy-in", "date": datetime(2024, 1, 15)},
-                    {"player_id": 8, "amount": 30.0, "description": "Buy-in", "date": datetime(2024, 1, 15)},
-                    {"player_id": 1, "amount": -20.0, "description": "Cash out", "date": datetime(2024, 1, 15)},
-                    {"player_id": 2, "amount": 45.0, "description": "Winnings", "date": datetime(2024, 1, 15)},
-                    {"player_id": 3, "amount": -15.0, "description": "Cash out", "date": datetime(2024, 1, 15)},
-                    {"player_id": 4, "amount": 30.0, "description": "Winnings", "date": datetime(2024, 1, 15)},
-                    {"player_id": 5, "amount": -10.0, "description": "Cash out", "date": datetime(2024, 1, 15)},
-                    {"player_id": 6, "amount": 25.0, "description": "Winnings", "date": datetime(2024, 1, 15)},
-                    {"player_id": 7, "amount": -25.0, "description": "Cash out", "date": datetime(2024, 1, 15)},
-                    {"player_id": 8, "amount": 20.0, "description": "Winnings", "date": datetime(2024, 1, 15)}
+                    {"player_id": 1, "game_date": datetime(2024, 1, 15).date(), "net_profit": 30.0, "running_balance": 30.0},
+                    {"player_id": 2, "game_date": datetime(2024, 1, 15).date(), "net_profit": 45.0, "running_balance": 45.0},
+                    {"player_id": 3, "game_date": datetime(2024, 1, 15).date(), "net_profit": -15.0, "running_balance": -15.0},
+                    {"player_id": 4, "game_date": datetime(2024, 1, 15).date(), "net_profit": 30.0, "running_balance": 30.0},
+                    {"player_id": 5, "game_date": datetime(2024, 1, 15).date(), "net_profit": -10.0, "running_balance": -10.0},
+                    {"player_id": 6, "game_date": datetime(2024, 1, 15).date(), "net_profit": 25.0, "running_balance": 25.0},
+                    {"player_id": 7, "game_date": datetime(2024, 1, 15).date(), "net_profit": -25.0, "running_balance": -25.0},
+                    {"player_id": 8, "game_date": datetime(2024, 1, 15).date(), "net_profit": 20.0, "running_balance": 20.0}
                 ]
                 
                 for entry_data in ledger_data:
@@ -57,12 +49,12 @@ def run_migration_if_needed():
                 db.session.commit()
                 print(f"Added {len(ledger_data)} ledger entries")
                 
-                # Create payments
+                # Create payments (using correct field names)
                 payments_data = [
-                    {"player_id": 1, "amount": 30.0, "date": datetime(2024, 1, 16), "description": "Venmo payment"},
-                    {"player_id": 3, "amount": 15.0, "date": datetime(2024, 1, 16), "description": "Cash payment"},
-                    {"player_id": 5, "amount": 10.0, "date": datetime(2024, 1, 17), "description": "Venmo payment"},
-                    {"player_id": 7, "amount": 25.0, "date": datetime(2024, 1, 17), "description": "Cash payment"}
+                    {"player_id": 1, "amount": 30.0, "payment_date": datetime(2024, 1, 16).date(), "payment_method": "Venmo"},
+                    {"player_id": 3, "amount": 15.0, "payment_date": datetime(2024, 1, 16).date(), "payment_method": "Cash"},
+                    {"player_id": 5, "amount": 10.0, "payment_date": datetime(2024, 1, 17).date(), "payment_method": "Venmo"},
+                    {"player_id": 7, "amount": 25.0, "payment_date": datetime(2024, 1, 17).date(), "payment_method": "Cash"}
                 ]
                 
                 for payment_data in payments_data:

@@ -2,14 +2,11 @@ import os
 from datetime import timedelta
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'your-secret-key-here-change-this-in-production'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///poker_ledger.db'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-secret-key-change-in-production'
+    ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD') or 'admin123'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOAD_FOLDER = 'uploads'
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
-    
-    # Admin configuration - CHANGE THIS IN PRODUCTION
-    ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD') or 'admin123'
     
     # Session configuration
     PERMANENT_SESSION_LIFETIME = timedelta(hours=24)
@@ -18,14 +15,15 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///poker_ledger.db'
 
 class ProductionConfig(Config):
     DEBUG = False
-    SESSION_COOKIE_SECURE = False  # Set to True when HTTPS is available
-    
-    # Use environment variables for sensitive data, but don't fail if not set
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'your-secret-key-here-change-this-in-production'
-    ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD') or 'admin123'
+    # Use PostgreSQL if DATABASE_URL is available (Railway), otherwise fallback to SQLite
+    if os.environ.get('DATABASE_URL'):
+        SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    else:
+        SQLALCHEMY_DATABASE_URI = 'sqlite:///poker_ledger.db'
 
 config = {
     'development': DevelopmentConfig,

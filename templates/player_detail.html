@@ -160,7 +160,6 @@
                                     <tr>
                                         <th>Date</th>
                                         <th>Amount</th>
-                                        <th>To/From</th>
                                         <th>Method</th>
                                     </tr>
                                 </thead>
@@ -170,15 +169,6 @@
                                         <td>{{ payment.payment_date.strftime('%Y-%m-%d') }}</td>
                                         <td class="{{ 'text-success' if payment.amount >= 0 else 'text-danger' }}">
                                             {{ "${:,.2f}".format(payment.amount) }}
-                                        </td>
-                                        <td>
-                                            {% if payment.transfer_to_player and payment.amount > 0 %}
-                                                <span class="badge bg-info">To {{ payment.transfer_to_player.name }}</span>
-                                            {% elif payment.transfer_to_player and payment.amount < 0 %}
-                                                <span class="badge bg-warning">From {{ payment.transfer_to_player.name }}</span>
-                                            {% else %}
-                                                <span class="text-muted">Bank/General</span>
-                                            {% endif %}
                                         </td>
                                         <td>
                                             {% if payment.payment_method %}

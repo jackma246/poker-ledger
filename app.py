@@ -58,11 +58,7 @@ class Payment(db.Model):
     amount = db.Column(db.Float, nullable=False)
     payment_date = db.Column(db.Date, nullable=False)
     payment_method = db.Column(db.String(50), nullable=True)  # Track how payment was made
-    transfer_to_player_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=True)  # For transfers
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    
-    # Relationships
-    transfer_to_player = db.relationship('Player', foreign_keys=[transfer_to_player_id], backref='transfers_received')
 
 class LedgerHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -431,8 +427,7 @@ def add_payment():
         player_id=int(player_id),
         amount=amount,
         payment_date=payment_date,
-        payment_method=payment_method,
-        transfer_to_player_id=int(transfer_to_player_id) if transfer_to_player_id else None
+        payment_method=payment_method
     )
     db.session.add(payment)
     
@@ -442,8 +437,7 @@ def add_payment():
             player_id=int(transfer_to_player_id),
             amount=-amount,  # Negative amount for the recipient
             payment_date=payment_date,
-            payment_method=payment_method,
-            transfer_to_player_id=int(player_id)  # Reference back to the original payer
+            payment_method=payment_method
         )
         db.session.add(recipient_payment)
     

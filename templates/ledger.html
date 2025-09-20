@@ -170,7 +170,16 @@
                                    step="0.01" required>
                         </div>
                         <div class="form-text">
-                            Use positive amounts for player payments to bank. Use negative amounts for bank payouts to player.
+                            Use positive amounts for payments. Leave recipient blank for bank payments.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="payment_recipient" class="form-label">Payment To (Optional)</label>
+                        <select class="form-select" id="payment_recipient" name="transfer_to_player_id">
+                            <option value="">Bank/General Payment</option>
+                        </select>
+                        <div class="form-text">
+                            Select another player to record a transfer. Leave blank for bank payments.
                         </div>
                     </div>
                     <div class="mb-3">
@@ -313,6 +322,28 @@ function sortTable(column, direction) {
 function addPayment(playerId, playerName) {
     document.getElementById('payment_player_id').value = playerId;
     document.getElementById('payment_date').value = new Date().toISOString().split('T')[0];
+    
+    // Populate recipient dropdown with all players except the current one
+    const recipientSelect = document.getElementById('payment_recipient');
+    recipientSelect.innerHTML = '<option value="">Bank/General Payment</option>';
+    
+    // Get all players from the table
+    const table = document.getElementById('ledgerTable');
+    const rows = table.querySelectorAll('tbody tr');
+    
+    rows.forEach(row => {
+        const playerNameCell = row.querySelector('td:first-child strong');
+        if (playerNameCell) {
+            const name = playerNameCell.textContent.trim();
+            // Skip the current player
+            if (name !== playerName) {
+                const option = document.createElement('option');
+                option.value = row.querySelector('a[href*="/player/"]').href.split('/').pop();
+                option.textContent = name;
+                recipientSelect.appendChild(option);
+            }
+        }
+    });
     
     const modal = new bootstrap.Modal(document.getElementById('paymentModal'));
     modal.show();

@@ -58,7 +58,11 @@ class Payment(db.Model):
     amount = db.Column(db.Float, nullable=False)
     payment_date = db.Column(db.Date, nullable=False)
     payment_method = db.Column(db.String(50), nullable=True)  # Track how payment was made
+    transfer_to_player_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=True)  # For transfers
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Relationships
+    transfer_to_player = db.relationship('Player', foreign_keys=[transfer_to_player_id], backref='transfers_received')
 
 class LedgerHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -390,7 +394,7 @@ def player_detail(player_id):
     # Get all ledger entries
     ledger_entries = LedgerEntry.query.filter_by(player_id=player_id).order_by(LedgerEntry.game_date.desc()).all()
     
-    # Get all payments
+    # Get all payments with recipient information
     payments = Payment.query.filter_by(player_id=player_id).order_by(Payment.payment_date.desc()).all()
     
     # Calculate total net profit from games only
@@ -417,20 +421,41 @@ def edit_player():
 @admin_required
 def add_payment():
     player_id = request.form.get('player_id')
+    transfer_to_player_id = request.form.get('transfer_to_player_id')
     amount = float(request.form.get('amount'))
     payment_date = datetime.strptime(request.form.get('payment_date'), '%Y-%m-%d').date()
     payment_method = request.form.get('payment_method')
     
+    # Create payment record for the payer
     payment = Payment(
         player_id=int(player_id),
         amount=amount,
         payment_date=payment_date,
-        payment_method=payment_method
+        payment_method=payment_method,
+        transfer_to_player_id=int(transfer_to_player_id) if transfer_to_player_id else None
     )
     db.session.add(payment)
+    
+    # If this is a transfer to another player, create a corresponding negative payment record for the recipient
+    if transfer_to_player_id:
+        recipient_payment = Payment(
+            player_id=int(transfer_to_player_id),
+            amount=-amount,  # Negative amount for the recipient
+            payment_date=payment_date,
+            payment_method=payment_method,
+            transfer_to_player_id=int(player_id)  # Reference back to the original payer
+        )
+        db.session.add(recipient_payment)
+    
     db.session.commit()
     
-    flash('Payment added successfully!', 'success')
+    if transfer_to_player_id:
+        payer = Player.query.get(int(player_id))
+        recipient = Player.query.get(int(transfer_to_player_id))
+        flash(f'Payment transfer of ${amount:.2f} from {payer.name} to {recipient.name} recorded successfully!', 'success')
+    else:
+        flash('Payment added successfully!', 'success')
+    
     return redirect(url_for('player_detail', player_id=player_id))
 
 @app.route('/edit_ledger_entry', methods=['POST'])
